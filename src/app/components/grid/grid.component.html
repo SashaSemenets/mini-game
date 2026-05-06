@@ -1,0 +1,9 @@
+<div class="grid">
+  @for (cell of cells(); track cell.id) {
+    <app-cell
+      [cell]="cell"
+      [index]="cell.id"
+      (cellClick)="onCellClick($event)"
+    />
+  }
+</div>

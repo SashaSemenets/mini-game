@@ -1,12 +1,31 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, computed } from '@angular/core';
+import { ControlsComponent, GridComponent, ScoreboardComponent } from './components';
+import { GameService } from './services';
+import { Winner } from './types';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    ScoreboardComponent,
+    ControlsComponent,
+    GridComponent,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('mini-game');
+  readonly #game = inject(GameService);
+
+  protected readonly winner = this.#game.winner;
+  protected readonly isRunning = this.#game.isRunning;
+  protected readonly playerScore = this.#game.playerScore;
+  protected readonly computerScore = this.#game.computerScore;
+  protected readonly statusMessage = this.#game.statusMessage;
+
+  protected readonly playerWon = computed(() => this.#game.winner() === Winner.Player);
+
+  protected restartGame(): void {
+    this.#game.restartGame();
+  }
 }

@@ -1,0 +1,22 @@
+.cell {
+  aspect-ratio: 1;
+  background: var(--cell-idle);
+  border-radius: var(--radius-sm);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s ease, transform 0.1s ease;
+  user-select: none;
+
+  &--active {
+    background: var(--cell-active);
+    cursor: pointer;
+
+    &:hover  { background: var(--cell-active-hover); transform: scale(1.06); }
+    &:active { transform: scale(0.94); }
+  }
+
+  &--player-won   { background: var(--cell-player); }
+  &--computer-won { background: var(--cell-cpu); }
+}
