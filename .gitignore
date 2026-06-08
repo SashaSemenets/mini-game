@@ -20,13 +20,6 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 .history/*
 
 # Miscellaneous
@@ -44,7 +37,6 @@ __screenshots__/
 Thumbs.db
 
 # Playwright
-node_modules/
 /test-results/
 /playwright-report/
 /blob-report/
